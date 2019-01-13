@@ -31,7 +31,7 @@ public class AppiumSetup {
 	
 	public void closeDriver()
 	{
-		driver.close();
+		driver.quit();
 	}
 
 	public AppiumDriver createAppiumDriverInstance(String platform) throws MalformedURLException
@@ -40,8 +40,8 @@ public class AppiumSetup {
 		//Configuration for Android
 		if(platform.equalsIgnoreCase("android"))
 		{
-			//driver = new AndroidDriver(service.getUrl(), setAndroidCapabilities(capabilities));
-			driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), setAndroidCapabilities(capabilities));
+			driver = new AndroidDriver(service.getUrl(), setAndroidCapabilities(capabilities));
+			
 		}
 		//Configuration for IOS
 		else if(platform.equalsIgnoreCase("ios"))
@@ -89,6 +89,7 @@ public class AppiumSetup {
 			capabilities.setCapability("platformVersion", envConfig.getProperty("platformVersion")); 
 			capabilities.setCapability("deviceName", envConfig.getProperty("deviceName")); 
 			//capabilities.setCapability("bundleid", envConfig.getProperty("bundleid"));
+			capabilities.setCapability("automationName", envConfig.getProperty("automationName"));
 			capabilities.setCapability("app", path);
 			return capabilities;
 		}catch(Exception e)

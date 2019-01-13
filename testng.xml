@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="assignment">
+	
+	<test name="AssignmentTest" >
+		<classes>
+			<class name="testcases.AppLaunchTest" />
+		</classes>
+	</test>
+</suite>
